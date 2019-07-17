@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
- $(".btn").click(function() {
+ $(".btn1").click(function() {
    $.getJSON(
      'https://api.myjson.com/bins/jcmhn',
      function(data) {
@@ -14,4 +14,23 @@ $(document).ready(function() {
      }
    );
  });
+
+ $(".btn2").click(function() {
+   var obj = {};
+   $(".data").each(function() {
+    obj[$(this).attr('id')] = $(this).val();
+    });
+
+  $.each(obj, function(key, value){
+    $("p").each(function() {
+      var text = $(this).text();
+      var n_key = "{"+key+"}"
+      text = text.replace(n_key,obj[key]);
+      $(this).text(text);
+    });
+
+  });
+
+ });
+
 });
